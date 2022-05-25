@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tic_tac_toe/core/functions/checkItems.dart';
 import 'package:tic_tac_toe/core/functions/release_items.dart';
 import 'package:tic_tac_toe/core/future/showModal.dart';
@@ -43,8 +44,8 @@ class _HomePageState extends State<HomePage> {
                         alignment: Alignment.center,
                         child: Padding(
                           padding: EdgeInsets.all(height * 0.01),
-                          child: Image(
-                            image: AssetImage(imgList[index]),
+                          child: SvgPicture.asset(
+                            imgList[index],
                             width: height * 5,
                             height: height * 0.12,
                             fit: BoxFit.fill,
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onTap: () {
-                        list[index] == 0 ? check(height, index ): null ;
+                        list[index] == 0 ? check(height, index) : null;
                       },
                     );
                   },
@@ -67,7 +68,7 @@ class _HomePageState extends State<HomePage> {
 
   void check(height, index) {
     String photo =
-        (count % 2) == 0 ? 'assets/images/oo.png' : 'assets/images/x.png';
+        (count % 2) == 0 ? 'assets/images/oo.svg' : 'assets/images/x.svg';
     imgList[index] = photo;
     list[index] = (count % 2) == 0 ? 2 : 1;
     count++;
